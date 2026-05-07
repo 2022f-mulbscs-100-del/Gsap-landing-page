@@ -2,15 +2,15 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 
 export default function FillButton() {
-  const buttonRef = useRef(null);
-  const fillRef = useRef(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const fillRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = buttonRef.current;
     const fill = fillRef.current;
 
-    const rect = btn?.getBoundingClientRect()  ;
-
+    const rect = btn!.getBoundingClientRect()  ;
+ if (!btn || !fill) return;
     // mouse position inside button
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
